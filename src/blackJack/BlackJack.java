@@ -126,7 +126,7 @@ public class BlackJack {
         }
     }
 
-    public void newDeck() {
+    public void newDeck(){
         deck.reset();
         deck.shuffle();
     }
