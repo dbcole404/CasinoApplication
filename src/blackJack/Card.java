@@ -1,17 +1,21 @@
+package blackJack;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class Card {
 
     private String suit;
-    private static int cardNum;
+    private int cardNum;
+    private int cardValue;
     private String cardName;
     private final List<String> validSuits = Arrays.asList("HEARTS", "CLUBS", "DIAMONDS", "SPADES");
 
-    //Card constructor
+    //blackJack.Card constructor
     public Card(String suit, int cardNumber) {
         setSuit(suit.toUpperCase());
         setCardNum(cardNumber);
+        setValue(cardNumber);
     }
 
     //Check if suit is valid
@@ -32,15 +36,15 @@ public class Card {
     private String cardNumToCardName(int num) {
         switch (num) {
             case 1  -> cardName = "ACE";
-            case 2  -> cardName = "2";
-            case 3  -> cardName = "3";
-            case 4  -> cardName = "4";
-            case 5  -> cardName = "5";
-            case 6  -> cardName = "6";
-            case 7  -> cardName = "7";
-            case 8  -> cardName = "8";
-            case 9  -> cardName = "9";
-            case 10 -> cardName = "10";
+            case 2  -> cardName = "TWO";
+            case 3  -> cardName = "THREE";
+            case 4  -> cardName = "FOUR";
+            case 5  -> cardName = "FIVE";
+            case 6  -> cardName = "SIX";
+            case 7  -> cardName = "SEVEN";
+            case 8  -> cardName = "EIGHT";
+            case 9  -> cardName = "NINE";
+            case 10 -> cardName = "TEN";
             case 11 -> cardName = "JACK";
             case 12 -> cardName = "QUEEN";
             case 13 -> cardName = "KING";
@@ -58,24 +62,41 @@ public class Card {
     }
 
     //Set card number
-    public void setCardNum(int num){
+    public void setCardNum(int num) {
         this.cardNum = num;
         this.cardName = cardNumToCardName(num);
     }
 
+    //Set card value (for blackjack)
+    public void setValue(int num) {
+        if (num > 1 && num <= 10) {
+            this.cardValue = num;
+        }
+        else if (num > 10 && num <= 13){
+            this.cardValue = 10;
+        }
+        else {
+            this.cardValue = 11;
+        }
+    }
+
     //Get card suit
     public String getSuit(){
-        return suit;
+        return this.suit;
     }
 
     //Get card number value
-    public static int getCardNum(){
-        return cardNum;
+    public int getNum(){
+        return this.cardNum;
+    }
+
+    public int getValue() {
+        return this.cardValue;
     }
 
     //Get card name
-    public String getCardName(){
-        return cardName;
+    public String getName(){
+        return this.cardName;
     }
 
     //Return card as a string
@@ -83,5 +104,4 @@ public class Card {
     public String toString() {
         return (this.cardName + " OF " + this.suit);
     }
-
 }

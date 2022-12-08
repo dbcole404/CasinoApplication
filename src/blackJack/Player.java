@@ -1,3 +1,5 @@
+package blackJack;
+
 public class Player {
     private String userName;
     private String passWord;
@@ -10,12 +12,12 @@ public class Player {
     private int gamesRoulette;
     private int gamesUnknown;
 
-    //Default constructor for Player
+    //Default constructor for blackJack.Player
     public Player() {
 
     }
 
-    //Constructor for Player
+    //Constructor for blackJack.Player
     public Player(String userName, String passWord, int chips, int money, int totalBet, int wins, int losses, int gamesBlackJack,
                   int gamesRoulette, int gamesUnknown) {
         this.userName = userName;
